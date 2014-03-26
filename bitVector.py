@@ -3,9 +3,18 @@ This is an implementation of a simple bit-based class
 for efficient memory utilization in Python
 
 MOTIVATION:
-The smallest addressable unit in memory is a byte - so one bool is one byte
+The smallest addressable unit in memory is a byte - so one bool 
+is one byte. One integer in Python is actually 4 bytes.
 this leads to some pretty inefficient usage in terms of bits.
 I am proposing the following class for efficient bit usage
+"""
+
+
+"""
+Currently - the value of integer size is hardcoded into the 
+class- we want to be able to generalize it for other systems 
+So write a helper function to compute integer size during 
+initialization.
 """
 
 import sys
@@ -45,4 +54,7 @@ class BitVector():
         else:
             return False
 
-    
+"""
+By Anjishnu Kumar
+- Master Candidate, Computer Science, Columbia University
+"""
