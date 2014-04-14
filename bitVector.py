@@ -19,11 +19,14 @@ initialization.
 
 import sys
 
+#intbits is the number of bits in a system integer 
+intbits = 32
+
 class BitVector():
     byteArray = []
     def __init__(self,numbits):
-        num_of_bytes = numbits/32
-        if numbits%32>0:
+        num_of_bytes = numbits/intbits
+        if numbits%intbits>0:
             num_of_bytes+=1
         # We have now computed minimum number of bytes needed for 
         # representing the bit vector
@@ -31,8 +34,8 @@ class BitVector():
         self.byteArray = [0]*num_of_bytes
 
     def setBit(self,position, boolean):
-        bytePosition = position/32
-        bitPosition  = position%32
+        bytePosition = position/intbits
+        bitPosition  = position%intbits
         tmpByte = 0
         if boolean == True:
             tmpByte = 1
@@ -45,8 +48,8 @@ class BitVector():
         return
 
     def getBit(self,position):
-        bytePosition = position/32
-        bitPosition  = position%32
+        bytePosition = position/intbits
+        bitPosition  = position%intbits
         byteInt = self.byteArray[bytePosition]
         byteInt = byteInt>>(bitPosition)
         if byteInt%2==1:
